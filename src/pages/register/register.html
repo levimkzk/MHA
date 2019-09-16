@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar color="stable">
+      <ion-title>注册用户</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content class="inputstyle">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="card" item-start></ion-icon>
+        <ion-input type="number" placeholder="请输入校园卡号" [(ngModel)]="IDNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="call" item-start></ion-icon>
+        <ion-input type="number" placeholder="请输入手机号码" [(ngModel)]="mobile"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail" item-start></ion-icon>
+        <ion-input type="number" placeholder="请输入短信验证码" [(ngModel)]="verificationCode"></ion-input>
+       <button ion-button outline item-end (click)="getVerificationCode()">{{timeValue}}</button>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-input type="text" placeholder="请输入登录用户名" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock" item-start></ion-icon>
+        <ion-input type="password" placeholder="请输入登录密码，至少6位" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock" item-start></ion-icon>
+        <ion-input type="password" placeholder="请确认密码" [(ngModel)]="confirmPassword"></ion-input>
+      </ion-item>
+      <div class="bottom-div">
+        <button ion-button block color="stable" (click)="register()">
+          同意协议并注册
+        </button>
+      <div>
+      <div>
+        <button ion-button block color="stable" outline (click)="tologin()">
+          已有账号？登录
+        </button>
+      </div>
+      </div>
+        <p tappable (tap)="privacy()">健康测评用户隐私协议</p>
+      </div>
+    </ion-list>
+  </ion-content>

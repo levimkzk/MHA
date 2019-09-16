@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>设置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content-gray">
+  <ion-list-header>
+    <ion-item>
+      <ion-avatar item-start tappable (click)="pickOption()">
+        <img *ngIf="image"
+        [src]="domSanitizer.bypassSecurityTrustUrl(image)" />
+      </ion-avatar>
+      <h2>{{username}}</h2>
+    </ion-item>
+  </ion-list-header>
+  <ion-list>
+    <button ion-item (click)="accountSetting()">
+      账户设置
+    </button>
+    <button ion-item (click)="changePassword()">
+      修改密码
+    </button>
+  </ion-list>
+  <ion-list>
+    <button ion-item (click)="youradvice()">
+        您的建议
+    </button>
+  </ion-list>
+  <ion-footer>
+      <button ion-button block (click)="Cancellation()">注销</button>
+  </ion-footer>
+</ion-content>

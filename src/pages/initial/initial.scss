@@ -1,0 +1,15 @@
+page-initial {
+  .backimage {
+    background-image: url('../imgs/welcome1.png') no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+  h1{
+    color: red
+  }
+  .image {
+    background-size: cover;
+  }
+
+}
