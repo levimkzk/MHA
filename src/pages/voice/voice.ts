@@ -23,6 +23,7 @@ export class VoicePage {
   public recordData : any;
   showRecordStatus: any;
   fab: any;
+  color: string = "danger";
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -38,8 +39,9 @@ export class VoicePage {
 
     // 设置上传参数
 
-  onTouch() {
+  pressEvent(e) {
 
+    this.color = "secondary";
     //创建media对象，参数文件名字，上面的filePath也指定了文件存放位置和文件名字
     this.recordData = this.media.create('file.wav');
 
@@ -49,7 +51,8 @@ export class VoicePage {
     //mediaObj.onStatusUpdate.subscribe(status => this.showRecordStatus(status));
     console.log('start');
   }
-  onRelease(){
+  pressupEvent(e){
+    this.color = "danger";
     this.recordData.stopRecord();
     console.log('end');
   }

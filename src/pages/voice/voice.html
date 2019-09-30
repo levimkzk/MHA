@@ -17,15 +17,15 @@
   <br>
   <p>{{content}}</p>
   <ion-fab center middle #fab5>
-    <button ion-fab color="danger" on-hold="onTouch()" on-release="onRelease()"><ion-icon name="mic"></ion-icon></button>
+    <button ion-fab color={{color}} (press)="pressEvent($event)" (pressup)="pressupEvent($event)"><ion-icon name="mic"></ion-icon></button>
     <ion-fab-list side="bottom">
-      <button ion-fab (click)="save()" color="secondary">保存</button>
+      <button ion-fab (tap)="save($event)" color="secondary">保存</button>
     </ion-fab-list>
     <ion-fab-list side="left">
-      <button ion-fab (click)="play()" color="light">重播</button>
+      <button ion-fab (tap)="play($event)" color="light">重播</button>
     </ion-fab-list>
     <ion-fab-list side="right">
-      <button ion-fab (click)="submit()" color="dark">提交</button>
+      <button ion-fab (tap)="submit($event)" color="dark">提交</button>
     </ion-fab-list>
   </ion-fab>
 

@@ -16,7 +16,8 @@ import { PedometerPage } from '../pages/pedometer/pedometer';
 import { MapPage } from '../pages/map/map';
 import { SleepPage } from '../pages/sleep/sleep';
 import { VoicePage } from '../pages/voice/voice';
-import { ForgetPage } from '../pages/forget/forget'
+import { ForgetPage } from '../pages/forget/forget';
+import { GoalsetPage } from '../pages/goalset/goalset';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,6 +37,7 @@ import { Pedometer, IPedometerData } from '@ionic-native/pedometer';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { BackButtonService } from '../providers/backButton/backButton';
 import { BackgroundMode } from '@ionic-native/background-mode';
+import { SettingsProvider } from '../providers/settings/settings';
 
 @NgModule({
   declarations: [
@@ -53,11 +55,16 @@ import { BackgroundMode } from '@ionic-native/background-mode';
     AccountPage,
     ChangePasswordPage,
     InitialPage,
+    GoalsetPage,
     SettingPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      mode: 'md',//'md'/'ios'
+      backButtonIcon:'arrow-back',//头部返回键的文字
+      tabsHideOnSubPages: 'true'//二级页面不显示底部栏
+    }),
     HttpClientModule,
     DirectivesModule
   ],
@@ -89,6 +96,7 @@ import { BackgroundMode } from '@ionic-native/background-mode';
     Geolocation,
     ImagePicker,
     ToastService,
+    SettingsProvider,
     File,
     FileTransfer,
     BackButtonService,

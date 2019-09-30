@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService, UserInfoState } from '../../providers/user/user';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
-import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker'
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { YouradvicePage } from '../youradvice/youradvice';
 import { AccountPage } from '../account/account';
