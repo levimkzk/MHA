@@ -1,13 +1,13 @@
 import { InitialPage } from './../initial/initial';
 import { Component } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { UserService, UserInfoState } from '../../providers/user/user';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
-import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
-import { Camera, CameraOptions } from "@ionic-native/camera";
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Camera } from "@ionic-native/camera";
 import { YouradvicePage } from '../youradvice/youradvice';
 import { AccountPage } from '../account/account';
 import { ChangePasswordPage } from '../change-password/change-password';
+import { Crop } from '@ionic-native/crop';
 
 @Component({
   selector: 'page-setting',
@@ -15,7 +15,7 @@ import { ChangePasswordPage } from '../change-password/change-password';
 })
 export class SettingPage {
 
-  image: string;;
+  photo =  'assets/imgs/blank-avatar.jpg';;
   username: string;
 
   constructor(public navCtrl: NavController,
@@ -24,7 +24,7 @@ export class SettingPage {
     public actionSheetCtrl: ActionSheetController,
     public alertCtrl: AlertController,
     public imagePicker: ImagePicker,
-    public domSanitizer: DomSanitizer,
+    public cropService: Crop,
     public camera: Camera) {
 
   }
@@ -47,63 +47,59 @@ export class SettingPage {
   }
   pickOption(){
     let actionSheet = this.actionSheetCtrl.create({
-      buttons: [{
-        text: '拍照',
-        role: 'takePhoto',
-        handler: () => {
-          this.takePhoto();
+      buttons: [
+        {
+          text: '拍照',
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: '手机相册',
+          handler: () => {
+            this.openImagePicker();
+          }
         }
-      }, {
-        text: '从相册选择',
-        role: 'chooseFromAlbum',
-        handler: () => {
-          this.chooseFromAlbum();
-        }
-      }, {
-        text: '取消',
-        role: 'cancel',
-        handler: () => {
-          console.log("cancel");
-        }
-      }]
+      ]
     });
-  actionSheet.present().then(value => {
-    return value;
-  });
-}
-takePhoto() {
-  const options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    saveToPhotoAlbum: true,
-    mediaType: this.camera.MediaType.PICTURE
+    actionSheet.present();
   }
 
-  this.camera.getPicture(options).then((imageData) => {
-    this.image = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-      this.displayErrorAlert(err);
-    });
-}
+  openImagePicker(){
+    let options = {
+      maximumImagesCount: 5,
+    }
+    this.imagePicker.getPictures(options)
+    .then((results) => {
+      this.reduceImages(results).then(() => {
+        console.log('all images cropped!!');
+      });
+    }, (err) => { console.log(err) });
+  }
 
-displayErrorAlert(err){
-  console.log(err);
-  let alert = this.alertCtrl.create({
-     title: '错误',
-     subTitle: '获取图片失败',
-     buttons: ['确定']
-   });
-   alert.present();
-}
-chooseFromAlbum(){
-  const options: ImagePickerOptions = {
-    maximumImagesCount: 1,
-    width: 100,
-    height: 100,
-    quality: 100
-  };
-    this.imagePicker.getPictures(options).then(imagedata => {
-    this.image = 'data:image/jpeg;base64,' + imagedata[0];
+  reduceImages(selected_pictures: any) : any{
+    return selected_pictures.reduce((promise:any, item:any) => {
+      return promise.then((result) => {
+        return this.cropService.crop(item, {quality: 75}).then(cropped_image => this.photo = cropped_image);
+      });
+    }, Promise.resolve());
+  }
+
+  takePicture(){
+    let options = {
+      quality: 100,
+      correctOrientation: true
+    };
+
+    this.camera.getPicture(options)
+    .then((data) => {
+      this.cropService
+      .crop(data, {quality: 75})
+      .then((newImage) => {
+        this.photo = newImage;
+      }, error => console.error("Error cropping image", error));
+    }, function(error) {
+      console.log(error);
     });
 
   }

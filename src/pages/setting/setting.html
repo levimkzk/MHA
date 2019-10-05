@@ -11,8 +11,8 @@
   <ion-list-header>
     <ion-item>
       <ion-avatar item-start tappable (click)="pickOption()">
-        <img *ngIf="image"
-        [src]="domSanitizer.bypassSecurityTrustUrl(image)" />
+        <img *ngIf="photo"
+        src="{{photo}}"/>
       </ion-avatar>
       <h2>{{username}}</h2>
     </ion-item>

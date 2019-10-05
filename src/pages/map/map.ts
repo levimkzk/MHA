@@ -38,6 +38,8 @@ export class MapPage {
     this.mapObj = new AMap.Map(this.map_container.nativeElement, {
       resizeEnable: true,
       pitch:75, // 地图俯仰角度，有效范围 0 度- 83 度
+      rotateEnable: true,
+      showBuildingBlock: true,
       viewMode:'3D' // 地图模式
     });
     this.mapObj.getCenter();
