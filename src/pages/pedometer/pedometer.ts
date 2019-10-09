@@ -1,11 +1,10 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, ModalController } from 'ionic-angular';
-import { Pedometer, IPedometerData } from '@ionic-native/pedometer';
+import { Pedometer } from '@ionic-native/pedometer';
 import { Subscription } from 'rxjs/Subscription';
 import { HttpProvider } from '../../providers/http/http';
 
 import { SettingsProvider } from '../../providers/settings/settings';
-import { GoalsetPage } from '../goalset/goalset';
 
 
 @IonicPage()
@@ -23,20 +22,13 @@ export class PedometerPage {
   timeElapsed: any;
   //间隔
   interval: any;
-  time: any;
-  time1: any;
-  time2: any;
-  currentH: any;
-  currentM: any;
-  currentS: any;
-
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
       public http: HttpProvider,
       private ref: ChangeDetectorRef,
       public platform: Platform,
-      public pedometer: Pedometer,
+     public pedometer: Pedometer,
       public modalCtrl: ModalController,
        public settings: SettingsProvider) {
         this.interval = setInterval(() => {
@@ -70,15 +62,7 @@ export class PedometerPage {
     this.percentage = (this.steps / this.goal) * 100;
   }
 
-  showOptions() {
-    let modal = this.modalCtrl.create(GoalsetPage);
-    modal.onDidDismiss((result) => {
-      if (result) {
-        this.goal = result;
-      }
-    })
-    modal.present();
-  }
+
 
 
 }

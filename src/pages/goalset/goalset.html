@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      User Settings
+      目标设定
     </ion-title>
     <ion-buttons start>
       <button ion-button (tap)="dismiss()">
-        <span ion-text color="primary">Cancel</span>
+        <span ion-text color="primary">取消</span>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -14,11 +14,11 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label floating>Step Goal</ion-label>
+      <ion-label floating>目标步数</ion-label>
       <ion-input type="number" [(ngModel)]="goal"></ion-input>
     </ion-item>
   </ion-list>
   <div padding>
-    <button ion-button block (tap)="update()">Update</button>
+    <button ion-button block (tap)="update()">更新</button>
   </div>
 </ion-content>

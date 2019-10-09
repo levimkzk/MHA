@@ -38,6 +38,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { BackButtonService } from '../providers/backButton/backButton';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { SettingsProvider } from '../providers/settings/settings';
+import { CameraGalleryProvider } from '../providers/camera-gallery/camera-gallery';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { SettingsProvider } from '../providers/settings/settings';
     PedometerPage,
     MapPage,
     ForgetPage,
+    GoalsetPage,
     SleepPage,
     VoicePage,
     ChangePasswordPage,
@@ -105,6 +107,7 @@ import { SettingsProvider } from '../providers/settings/settings';
     DeviceMotion,
     UserService,
     Media,
+    CameraGalleryProvider,
     VerifyService
   ]
 })

@@ -8,12 +8,6 @@
 
   <ion-navbar color="dark">
     <ion-title>运动</ion-title>
-     <ion-buttons end>
-      <button ion-button block (click)="showOptions()">
-        设置
-        <ion-icon name="settings"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -25,13 +19,13 @@
    <ion-card>
     <ion-item>
       <ion-icon name="walk" item-start large></ion-icon>
-      <h2>Step Count</h2>
+      <h2>运动步数</h2>
       <p>{{steps}}</p>
     </ion-item>
     <ion-item>
       <ion-icon name="trophy" item-left large ></ion-icon>
-      <h2>Progress Towards Goal</h2>
-     <p>Goal: {{goal}} Steps / {{percentage.toFixed(1)}} %</p>
+      <h2>目标进程</h2>
+     <p>目标： {{goal}} 步 / {{percentage.toFixed(1)}} %</p>
     </ion-item>
   </ion-card>
 </ion-content>
