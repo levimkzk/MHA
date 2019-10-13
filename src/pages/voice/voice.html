@@ -15,10 +15,10 @@
 <ion-content>
   <h1>让我听听你的声音：</h1>
   <br>
-  <p>{{content}}</p>
+  <h4>{{content}}</h4>
   <ion-fab center middle #fab5>
-    <button ion-fab color={{color}} (press)="pressEvent($event)" (pressup)="pressupEvent($event)"><ion-icon name="mic"></ion-icon></button>
-    <ion-fab-list side="bottom">
+    <button ion-fab color="danger" (press)="pressEvent($event)" (pressup)="pressupEvent($event)"><ion-icon name="mic"></ion-icon></button>
+    <ion-fab-list side="top">
       <button ion-fab (tap)="save($event)" color="secondary">保存</button>
     </ion-fab-list>
     <ion-fab-list side="left">
@@ -28,5 +28,4 @@
       <button ion-fab (tap)="submit($event)" color="dark">提交</button>
     </ion-fab-list>
   </ion-fab>
-
 </ion-content>

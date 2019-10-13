@@ -18,9 +18,10 @@ import { CameraGalleryProvider } from '../../providers/camera-gallery/camera-gal
 })
 export class SettingPage {
 
-  photo =  'assets/imgs/blank-avatar.jpg';;
-  username: string;
+  photo =  'assets/imgs/blank-avatar.jpg';
+  username:string = 'no_name';
   goal: number;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public userService: UserService,

@@ -13,9 +13,7 @@ import { HttpProvider } from '../../providers/http/http';
 export class SleepPage {
 
   accelerationSubscription: Subscription;
-  sleeptime: any;
-  Dsleeptime: any;
-  Ssleeptime: any;
+  sleep: any = {};
   time: any;
   timesleep: any;
   timegetup: any;
@@ -34,8 +32,8 @@ export class SleepPage {
     console.log('ionViewDidLoad SleepPage');
   }
    gotosleep(){
-    this.time=new Date().getTime();
-    this.timesleep=new Date();
+    this.sleep.gotosleep=new Date(new Date().getTime()+8*60*60*1000).toISOString();//北京时间
+    this.timesleep=new Date().getTime();
     /** this.deviceMotion.getCurrentAcceleration().then(
       (acceleration: DeviceMotionAccelerationData) => console.log(
       'Acceleration X: ' + acceleration.x + '\n' +
@@ -59,12 +57,13 @@ export class SleepPage {
     });
   }
   getup(){
-    this.accelerationSubscription.unsubscribe();
-    this.timegetup=new Date();
+    this.sleep.getup=new Date(new Date().getTime()+8*60*60*1000).toISOString();//北京时间
+    //this.accelerationSubscription.unsubscribe();
+    this.timegetup=new Date().getTime();
     this.accelerationX = 0;
     this.accelerationY = 0;
     this.accelerationZ = 0;
-    this.sleeptime = new Date((this.timegetup -this.timesleep)).toISOString();
+    this.sleep.time = new Date((this.timegetup -this.timesleep)).toISOString();
     this.http.sleeptime(this.accelerationX, this.accelerationY, this.accelerationZ).subscribe(res=>{
       if(res["Status"]=="OK"){
         console.log('sleeptime ok')

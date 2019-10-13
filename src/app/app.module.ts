@@ -39,6 +39,7 @@ import { BackButtonService } from '../providers/backButton/backButton';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { SettingsProvider } from '../providers/settings/settings';
 import { CameraGalleryProvider } from '../providers/camera-gallery/camera-gallery';
+import { BaiduMapLoc } from 'baidumaploc';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { CameraGalleryProvider } from '../providers/camera-gallery/camera-galler
     UserService,
     Media,
     CameraGalleryProvider,
-    VerifyService
+    VerifyService,
+    BaiduMapLoc,
   ]
 })
 export class AppModule {}

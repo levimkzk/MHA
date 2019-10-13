@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController,FabContainer } fro
 import { Media, MediaObject } from '@ionic-native/media';
 import { FileTransfer, FileUploadOptions, FileTransferObject, FileUploadResult } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { ToastService } from '../../providers/toast/toast';
 
 /**
  * Generated class for the VoicePage page.
@@ -18,19 +19,19 @@ import { File } from '@ionic-native/file';
 })
 export class VoicePage {
 
-  content: string;
+  content: string = "请阅读这句话";
   public filePath : any;
   public recordData : any;
   showRecordStatus: any;
   fab: any;
-  color: string = "danger";
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private media: Media,
     private file: File,
     public ft: FileTransfer,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public toast: ToastService) {
   }
 
   ionViewDidLoad() {
@@ -40,8 +41,7 @@ export class VoicePage {
     // 设置上传参数
 
   pressEvent(e) {
-
-    this.color = "secondary";
+    this.toast.show("开始录音");
     //创建media对象，参数文件名字，上面的filePath也指定了文件存放位置和文件名字
     this.recordData = this.media.create('file.wav');
 
@@ -52,7 +52,6 @@ export class VoicePage {
     console.log('start');
   }
   pressupEvent(e){
-    this.color = "danger";
     this.recordData.stopRecord();
     console.log('end');
   }

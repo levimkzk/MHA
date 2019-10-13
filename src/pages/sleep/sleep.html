@@ -8,28 +8,33 @@
 </ion-header>
 
 <ion-content>
-  <h1>睡眠质量</h1>
-  <p>今天也要好好睡觉啊</p>
-  <div class="row responsive-sm">
-      <div class="col col-xs-4 text-center">
-        睡眠时长：
-      <ion-datetime displayFormat="HH:mm:ss" disabled="true" [(ngModel)]="sleeptime"></ion-datetime>
-      </div>
-      <div class="col col-xs-4 text-center">
-        深度睡眠：
-      <ion-datetime displayFormat="HH:mm:ss" disabled="true" [(ngModel)]="Dsleeptime"></ion-datetime>
-      </div>
-      <div class="col col-xs-4 text-center">
-        浅度睡眠：
-      <ion-datetime displayFormat="HH:mm:ss" disabled="true" [(ngModel)]="Ssleeptime"></ion-datetime>
-      </div>
-    </div>
-    <div class="row row-center">
-      <div class="col text-center">
-        <button ion-button (click)="gotosleep()" color="primary">入睡</button>
-      </div>
-      <div class="col text-center">
-        <button ion-button (click)="getup()" color="primary">起床</button>
-      </div>
-    </div>
+  <h1>今天也要好好睡觉啊！</h1>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed color="dark">入睡时间：</ion-label>
+        <ion-datetime displayFormat="YYYY/MM/DD HH:mm:ss" disabled="true" [(ngModel)]="sleep.gotosleep"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed color="dark">起床时间：</ion-label>
+        <ion-datetime displayFormat="YYYY/MM/DD HH:mm:ss" disabled="true" [(ngModel)]="sleep.getup"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed color="dark">睡眠时间：</ion-label>
+        <ion-datetime displayFormat="HH:mm:ss" disabled="true" [(ngModel)]="sleep.time"></ion-datetime>
+        </ion-item>
+        <ion-item>
+      <ion-label color="dark">深度睡眠时间：</ion-label>
+        <ion-datetime displayFormat="HH:mm:ss" disabled="true" [(ngModel)]="sleep.deep"></ion-datetime>
+        </ion-item>
+        <ion-item>
+      <ion-label color="dark">浅度睡眠时间：</ion-label>
+        <ion-datetime displayFormat="HH:mm:ss" disabled="true" [(ngModel)]="sleep.shallow"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-footer>
+  <button ion-button block (click)="gotosleep()" color="primary">入睡</button>
+  <button ion-button block (click)="getup()" color="primary">起床</button>
+  </ion-footer>
 </ion-content>
