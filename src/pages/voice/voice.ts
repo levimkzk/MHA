@@ -41,7 +41,9 @@ export class VoicePage {
     // 设置上传参数
 
   pressEvent(e) {
-    this.toast.show("开始录音");
+    setTimeout(() => {
+      this.toast.show("开始录音");
+    }, 5000);
     //创建media对象，参数文件名字，上面的filePath也指定了文件存放位置和文件名字
     this.recordData = this.media.create('file.wav');
 

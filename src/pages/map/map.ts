@@ -36,6 +36,7 @@ export class MapPage {
     this.loadMap();
     this.upposition();
    }
+   //可以加入定时器setInterval
    getCurrentPos(){
     this.baidumaploc.getCurrentPosition().then((res)=>{
         console.log(res);
